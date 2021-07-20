@@ -9,9 +9,11 @@ import { CalculatingRoundCardHeader } from './CardHeader'
 
 interface CalculatingCardProps {
   round: NodeRound
+  hasEnteredUp: boolean
+  hasEnteredDown: boolean
 }
 
-const CalculatingCard: React.FC<CalculatingCardProps> = ({ round }) => {
+const CalculatingCard: React.FC<CalculatingCardProps> = ({ round, hasEnteredUp, hasEnteredDown }) => {
   const { t } = useTranslation()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t('This round’s closing transaction has been submitted to the blockchain, and is awaiting confirmation.'),
@@ -23,7 +25,7 @@ const CalculatingCard: React.FC<CalculatingCardProps> = ({ round }) => {
       <Card>
         <CalculatingRoundCardHeader epoch={round.epoch} />
         <CardBody p="16px">
-          <MultiplierArrow isDisabled />
+          <MultiplierArrow isDisabled hasEntered={hasEnteredUp} />
           <RoundResultBox>
             <Flex alignItems="center" justifyContent="center" flexDirection="column">
               <Spinner size={96} />
@@ -33,7 +35,7 @@ const CalculatingCard: React.FC<CalculatingCardProps> = ({ round }) => {
               </Flex>
             </Flex>
           </RoundResultBox>
-          <MultiplierArrow betPosition={BetPosition.BEAR} isDisabled />
+          <MultiplierArrow betPosition={BetPosition.BEAR} isDisabled hasEntered={hasEnteredDown} />
         </CardBody>
       </Card>
       {tooltipVisible && tooltip}
