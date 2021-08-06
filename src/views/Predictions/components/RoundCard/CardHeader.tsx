@@ -92,7 +92,7 @@ export const CanceledRoundCardHeader: React.FC<BaseCardHeaderProps> = ({ epoch }
   return (
     <BaseCardHeader p="8px" bgKey="colors.warning">
       <Title icon={<BlockIcon mr="4px" width="21px" />}>
-        <Text color="text">{t('Calculating')}</Text>
+        <Text color="text">{t('Canceled')}</Text>
       </Title>
       <Text fontSize="12px" color="text" textAlign="center">
         {`#${epoch}`}
