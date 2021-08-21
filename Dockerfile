@@ -11,7 +11,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY yarn.lock ./
 
-RUN apk add git
+RUN apk add git python
 
 RUN yarn install
 
