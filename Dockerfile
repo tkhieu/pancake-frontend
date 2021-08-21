@@ -11,7 +11,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY yarn.lock ./
 
-RUN apk add git python
+RUN apk add git python gcc make libc-dev python g++
 
 RUN yarn install
 
